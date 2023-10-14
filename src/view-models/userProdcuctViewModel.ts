@@ -5,11 +5,11 @@ import { StoreType } from "../types/stateTypes";
 
 const useProductViewModel = () => {
     const dispatch = useDispatch();
-    const {products,selectedProduct,selectedProductId}=useSelector((state:StoreType) => state.product);
+    const {products,selectedProduct,selectedProductId,fetchProduct,fetchProducts,cart}=useSelector((state:StoreType) => state.product);
 
     const {getProducts,getProduct} =useProductModel();
 
-    const {setProducts,setProduct,setProductId} = ProductAction;
+    const {setProducts,setProduct,setProductId,addCart,removeCart} = ProductAction;
 
     const getAllProducts = () => {
         const data=getProducts();
@@ -35,12 +35,26 @@ const useProductViewModel = () => {
         });
     }
 
+    const addToCart = (pro:any,qty:number) =>{
+        pro={...pro,qty};
+        dispatch(addCart({product:pro}));
+    }
+
+    const removeFromCart = (id:number) =>{
+        dispatch(removeCart({id:id}));
+    }
+
     return{
+        fetchProduct,
+        fetchProducts,
         products,
         selectedProduct,
+        cart,
         getAllProducts,
         setSingleProduct,
-        getSingleProduct
+        getSingleProduct,
+        addToCart,
+        removeFromCart
     }
 }
 

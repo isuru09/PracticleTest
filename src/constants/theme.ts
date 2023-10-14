@@ -15,6 +15,8 @@ const images={
     phone:require('../../assets/images/phone.png'),
     sex:require('../../assets/images/sex.png'),
     work:require('../../assets/images/work.png'),
+    back:require('../../assets/images/back.png'),
+    next:require('../../assets/images/next.png'),
 }
 
 const colors = {

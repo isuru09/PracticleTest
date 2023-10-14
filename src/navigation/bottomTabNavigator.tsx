@@ -4,6 +4,7 @@ import { Image, StyleSheet } from "react-native";
 import ProfileScreen from "../screens/profileScreen";
 import CartScreen from "../screens/cartScreen";
 import HomeStack from "./homeStack";
+import { screens } from "./screens";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,10 +18,10 @@ const BottomTabNavigator = () => {
                     height: theme.sizes.hpoints * 10,
                 }
             }}
-            initialRouteName="Home"
+            initialRouteName={screens.homestack}
         >
             <Tab.Screen
-                name="Home"
+                name={screens.homestack}
                 component={HomeStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -32,7 +33,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Cart"
+                name={screens.cart}
                 component={CartScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -44,7 +45,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Profile"
+                name={screens.profile}
                 component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (

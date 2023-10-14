@@ -9,13 +9,14 @@ export default class Header extends Component {
             title,
             back,
             backFunc,
+            noborder,
             ...props
         } = this.props;
 
 
         return (
-            <View style={styles.headerrow}>
-                {back && (<TouchableOpacity style={styles.back}><Text normal>Back</Text></TouchableOpacity>)}
+            <View style={noborder?styles.headerrownb:styles.headerrow}>
+                {back && (<TouchableOpacity style={styles.back} onPress={backFunc}><Text normal>Back</Text></TouchableOpacity>)}
                 <Text style={styles.header} title center>{title}</Text>
                 {back && (<View style={styles.back}></View>)}
             </View>
@@ -29,6 +30,12 @@ const styles = StyleSheet.create({
         height:theme.sizes.hpoints*8,
         borderBottomColor:theme.colors.greyop,
         borderBottomWidth:theme.sizes.hpoints*0.2,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    headerrownb:{
+        flexDirection:'row',
+        height:theme.sizes.hpoints*8,
         alignItems:'center',
         justifyContent:'center',
     },

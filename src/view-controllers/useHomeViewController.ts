@@ -4,9 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { screens } from "../navigation/screens";
 
 const useHomeViewController = () =>{
-    const {products,getAllProducts,setSingleProduct}=useProductViewModel();
+    const {fetchProducts,products,getAllProducts,setSingleProduct}=useProductViewModel();
     const navigation=useNavigation();
-
 
     useEffect(()=>{
         getAllProducts()
@@ -18,6 +17,7 @@ const useHomeViewController = () =>{
     }
 
     return{
+        fetchProducts,
         products,
         setProductId
     }

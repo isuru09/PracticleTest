@@ -9,7 +9,6 @@ import ProductScreen from "../screens/productScreen";
 const HomeStack = () => {
     const Stack = createNativeStackNavigator();
     return (
-        <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
                     name={screens.home}
@@ -22,7 +21,6 @@ const HomeStack = () => {
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>
-        </NavigationContainer>
     );
 }
 

@@ -18,15 +18,23 @@ export const productSlice = createSlice({
             state.selectedProduct=action.payload.product;
             state.fetchProduct=false;
         },
+        addCart:(state,action:{payload: {product: any}; type: string})=>{
+            state.cart.push(action.payload.product);
+        },
+        removeCart:(state,action:{payload: {id: number}; type: string})=>{
+            state.cart=state.cart.filter((e:any)=>e.id!==action.payload.id);
+        },
     }
 });
 
-const { setProducts,setProduct,setProductId } = productSlice.actions;
+const { setProducts,setProduct,setProductId,addCart,removeCart } = productSlice.actions;
 
 export const ProductAction = {
     setProducts,
     setProduct,
-    setProductId
+    setProductId,
+    addCart,
+    removeCart
 };
 
 export default productSlice.reducer;

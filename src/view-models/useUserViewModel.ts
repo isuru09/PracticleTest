@@ -10,7 +10,6 @@ const useUserViewModel = () => {
     const {loggingIn,errMsg,userData}=useSelector((state:StoreType) => state.user);
 
     const {login}=useUserModel();
-    const navigation=useNavigation();
 
     const {setLogingIn,setError,setUser} = UserAction;
 
@@ -19,7 +18,6 @@ const useUserViewModel = () => {
         const data=login(username,password);
         data.then((resp)=>{
             dispatch(setUser({user:resp.data}));
-            navigation.navigate(screens.tab);
         }
         ).catch((e)=>{
             dispatch(setError({msg:e.response.data.message}));

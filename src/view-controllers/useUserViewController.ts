@@ -30,7 +30,6 @@ const useUserViewController = () => {
 
     const logout = () =>{
         logoutUser();
-        navigation.navigate(screens.login);
     }
 
     return{

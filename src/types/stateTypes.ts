@@ -10,6 +10,7 @@ export type ProductStateType = {
     fetchProduct:boolean,
     selectedProductId:number;
     selectedProduct:any;
+    cart:any;
 }
 
 export type StoreType={

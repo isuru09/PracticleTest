@@ -5,7 +5,8 @@ const productStore:ProductStateType={
     products:{},
     selectedProductId:0,
     fetchProduct:true,
-    selectedProduct:{}
+    selectedProduct:{},
+    cart:[]
 }
 
 export default productStore;

@@ -4,19 +4,25 @@ import useHomeViewController from "../view-controllers/useHomeViewController";
 import * as theme from "../constants/theme";
 import Header from "../components/Header";
 import ProductItem from "../components/ProductItem";
+import { Text } from "../components";
 
 
 const HomeScreen = () => {
-    const {products,setProductId}=useHomeViewController();
+    const { fetchProducts, products, setProductId } = useHomeViewController();
 
     return (
         <SafeAreaView style={styles.container}>
             <Header title="Products" />
-            <FlatList
-                data={products.products}
-                renderItem={({item})=><ProductItem item={item} onPress={()=>setProductId(item.id)}/>}
-                keyExtractor={(item)=>item.id}
-            />
+            {fetchProducts ? (
+                <Text normal center style={styles.load}>Getting data...</Text>
+            ) : (
+                <FlatList
+                    data={products.products}
+                    renderItem={({ item }) => <ProductItem item={item} onPress={() => setProductId(item.id)} />}
+                    keyExtractor={(item) => item.id}
+                />
+            )}
+
         </SafeAreaView>
     );
 }
@@ -24,8 +30,11 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:theme.colors.white
+        backgroundColor: theme.colors.white
     },
+    load:{
+        marginTop:theme.sizes.hpoints*5
+    }
 });
 
 export default HomeScreen;
