@@ -19,7 +19,12 @@ export const productSlice = createSlice({
             state.fetchProduct=false;
         },
         addCart:(state,action:{payload: {product: any}; type: string})=>{
-            state.cart.push(action.payload.product);
+            const p=state.cart.find(e=>e.id===action.payload.product.id);
+            if(p){
+                p.qty=p.qty+action.payload.product.qty;
+            }else{
+                state.cart.push(action.payload.product);
+            }
         },
         removeCart:(state,action:{payload: {id: number}; type: string})=>{
             state.cart=state.cart.filter((e:any)=>e.id!==action.payload.id);

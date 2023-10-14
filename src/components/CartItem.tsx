@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         flex:8
     },
     total:{
-        flex:1
+        flex:1.7,
+        textAlign:'right'
     }
 });
