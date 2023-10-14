@@ -1,4 +1,4 @@
-import { ProductStateType, UserStateType } from "../types/stateTypes";
+import { ProductStateType } from "../types/stateTypes";
 
 const productStore:ProductStateType={
     fetchProducts:true,

@@ -1,3 +1,5 @@
 import Text from "./text";
+import Button from "./button";
+import TextEdit from "./textEdit";
 
-export { Text };
+export { Text, Button, TextEdit };

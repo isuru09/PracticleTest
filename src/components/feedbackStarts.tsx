@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Image, StyleSheet, TouchableOpacity, View} from "react-native";
-import { Text } from "../components";
 import * as theme from "../constants/theme";
 
 export default class FeedbackStars extends Component {

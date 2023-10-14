@@ -1,9 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "../components";
-import TextEdit from "../components/textEdit";
+import { Text, TextEdit, Button } from "../components";
 import * as theme from "../constants/theme";
-import Button from "../components/button";
 import useUserViewController from "../view-controllers/useUserViewController";
 
 const LoginScreen = () => {

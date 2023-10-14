@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreType } from "../types/stateTypes";
 import { UserAction } from "../store/userSlice";
 import useUserModel from "../models/useUserModel";
-import { useNavigation } from "@react-navigation/native";
-import { screens } from "../navigation/screens";
 
 const useUserViewModel = () => {
     const dispatch = useDispatch();

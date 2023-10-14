@@ -3,9 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as theme from "../constants/theme";
 import Header from "../components/Header";
 import useProductViewController from "../view-controllers/useProductViewController";
-import { Text } from "../components";
-import Button from "../components/button";
-import Slider, { SliderComponent } from "@react-native-community/slider";
+import { Text, Button } from "../components";
+import Slider from "@react-native-community/slider";
 import FeedbackStars from "../components/feedbackStarts";
 
 

@@ -21,7 +21,7 @@ const useProductViewController = () =>{
     const addProductTocart = (pro:any) =>{
         if(qty>0){
             addToCart(pro,qty);
-            navigation.navigate(screens.cart);
+            navigation.navigate(screens.cartStack);
         }else{
             setMsg('Quantity should be more than 0')
         }

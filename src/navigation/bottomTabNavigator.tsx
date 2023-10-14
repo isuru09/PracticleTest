@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as theme from "../constants/theme";
-import { Image, Platform, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import ProfileScreen from "../screens/profileScreen";
-import CartScreen from "../screens/cartScreen";
 import HomeStack from "./homeStack";
 import { screens } from "./screens";
+import CartStack from "./cartStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,8 +35,8 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name={screens.cart}
-                component={CartScreen}
+                name={screens.cartStack}
+                component={CartStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

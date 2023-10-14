@@ -2,7 +2,7 @@ import { Image, StyleSheet, View } from "react-native";
 import * as theme from "../constants/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
 import IconNameRow from "../components/iconNameRow";
-import Button from "../components/button";
+import { Button } from "../components";
 import Header from "../components/Header";
 import useProfileViewController from "../view-controllers/useProfileViewController";
 

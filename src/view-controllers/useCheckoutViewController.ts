@@ -24,7 +24,7 @@ const useCheckoutViewController = () =>{
 
     const clearCart = () =>{
         clearAllCart();
-        navigation.navigate(screens.home);
+        navigation.navigate(screens.cart);
     }
 
     return{

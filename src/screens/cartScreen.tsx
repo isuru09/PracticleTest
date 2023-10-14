@@ -4,8 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/Header";
 import useCartViewController from "../view-controllers/userCartViewController";
 import CartItem from "../components/cartItem";
-import Button from "../components/button";
-import { Text } from "../components";
+import { Text, Button } from "../components";
 
 const CartScreen = () => {
     const { cart, removeItemFromCart, checkOut } = useCartViewController();

@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useHomeViewController from "../view-controllers/useHomeViewController";
 import * as theme from "../constants/theme";

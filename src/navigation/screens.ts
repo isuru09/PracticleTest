@@ -4,6 +4,7 @@ export const screens={
     homestack:'HomeStack',
     home:'Home',
     product:'Product',
+    cartStack:'CartStack',
     cart:'Cart',
     profile:'Profile',
     checkout:'Checkout',
