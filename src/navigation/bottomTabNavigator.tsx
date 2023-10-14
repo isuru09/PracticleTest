@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as theme from "../constants/theme";
-import { Image, StyleSheet } from "react-native";
+import { Image, Platform, StyleSheet } from "react-native";
 import ProfileScreen from "../screens/profileScreen";
 import CartScreen from "../screens/cartScreen";
 import HomeStack from "./homeStack";
@@ -16,6 +16,8 @@ const BottomTabNavigator = () => {
                 tabBarShowLabel: false,
                 tabBarStyle: {
                     height: theme.sizes.hpoints * 10,
+                    borderTopColor:theme.colors.greyop,
+                    borderTopWidth: theme.sizes.hpoints * 0.2,
                 }
             }}
             initialRouteName={screens.homestack}

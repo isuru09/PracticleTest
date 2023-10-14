@@ -6,11 +6,12 @@ import useProductViewController from "../view-controllers/useProductViewControll
 import { Text } from "../components";
 import Button from "../components/button";
 import Slider, { SliderComponent } from "@react-native-community/slider";
+import FeedbackStars from "../components/feedbackStarts";
 
 
 
 const ProductScreen = () => {
-    const { fetchProduct, selectedProduct, qty, addProductTocart, back, setQty } = useProductViewController();
+    const { fetchProduct, selectedProduct, qty, imgIndex, msg, addProductTocart, back, setQty, nextImg, prevImg } = useProductViewController();
 
     return (
         <SafeAreaView style={styles.container}>
@@ -19,40 +20,59 @@ const ProductScreen = () => {
                 <Text normal center style={styles.load}>Getting data...</Text>
             ) : (
                 <View style={styles.detContainer}>
-                    <View style={styles.imgRow}>
-                        <TouchableOpacity style={styles.handle}>
-                            <Image source={theme.images.back} style={styles.simg} />
-                        </TouchableOpacity>
+                    <View style={styles.content}>
+                        <View style={styles.imgRow}>
+                            <TouchableOpacity style={styles.handle} onPress={() => prevImg(selectedProduct.images.length)}>
+                                <Image source={theme.images.back} style={styles.simg} />
+                            </TouchableOpacity>
+
+                            <Image source={{ uri: selectedProduct.images[imgIndex] }} style={styles.img} />
+
+                            <TouchableOpacity style={styles.handle} onPress={() => nextImg(selectedProduct.images.length)}>
+                                <Image source={theme.images.next} style={styles.simg} />
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.descRow}>
+                            <Text title>{selectedProduct.title}</Text>
+                            <Text normal>{selectedProduct.description}</Text>
+                        </View>
+
+                        <View>
+                            <View style={styles.priceRow}>
+                                <Text title>Price</Text>
+                                <Text normal>{selectedProduct.price}$</Text>
+                            </View>
+                            <View style={styles.ratingRow}>
+                                <Text title>Feedback</Text>
+                                <FeedbackStars score={Math.floor(selectedProduct.rating)} />
+                            </View>
+                        </View>
+
+                        <View>
+                            <Text title center>Quantity</Text>
+                            <View style={styles.sliderRow}>
+                                <Text title>0</Text>
+                                <Slider
+                                    style={styles.slider}
+                                    minimumValue={0}
+                                    maximumValue={10}
+                                    minimumTrackTintColor={theme.colors.purple}
+                                    maximumTrackTintColor={theme.colors.greyop}
+                                    value={qty}
+                                    onValueChange={(v) => setQty(Math.floor(v))}
+                                    thumbTintColor={theme.colors.purple}
+                                />
+                                <Text title>10</Text>
+                            </View>
+                        </View>
                         
-                        <Image source={{ uri: selectedProduct.thumbnail }} style={styles.img} />
-                        <TouchableOpacity style={styles.handle}>
-                            <Image source={theme.images.next} style={styles.simg} />
-                        </TouchableOpacity>
+                    </View>
+                    {msg && (<Text normal center style={styles.msg}>{msg}</Text>)}
+                    <View style={styles.btn}>
+                        <Button text={`Add to Cart (${qty})`} onPress={() => addProductTocart(selectedProduct)} />
                     </View>
 
-                    <Text title>{selectedProduct.title}</Text>
-                    <Text normal>{selectedProduct.description}</Text>
-                    <View style={styles.row}>
-                        <Text title>Price</Text>
-                        <Text normal>{selectedProduct.price}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text title>Feedback</Text>
-                        <Text normal>{selectedProduct.rating}</Text>
-                    </View>
-                    <Text title center>Quantity</Text>
-                    <View style={styles.row}>
-                        <Slider
-                            style={styles.slider}
-                            minimumValue={0}
-                            maximumValue={10}
-                            minimumTrackTintColor={theme.colors.purple}
-                            maximumTrackTintColor={theme.colors.greyop}
-                            value={qty}
-                            onValueChange={(v)=>setQty(Math.floor(v))}
-                        />
-                    </View>
-                    <Button text={'Add to Cart'} onPress={()=>addProductTocart(selectedProduct)} />
                 </View>
 
             )}
@@ -69,19 +89,19 @@ const styles = StyleSheet.create({
         marginTop: theme.sizes.hpoints * 5
     },
     detContainer: {
-        marginTop: theme.sizes.hpoints * 2,
-        width: theme.sizes.wpoints * 90,
+        width: theme.sizes.wpoints * 99,
         alignSelf: 'center',
         gap: theme.sizes.hpoints * 0.2,
+        flex: 1
     },
     img: {
-        width: theme.sizes.wpoints * 82,
+        width: theme.sizes.wpoints * 90,
         height: theme.sizes.hpoints * 22,
     },
-    handle:{
+    handle: {
         height: theme.sizes.hpoints * 22,
-        alignItems:'center',
-        justifyContent:'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     simg: {
         width: theme.sizes.wpoints * 3,
@@ -89,17 +109,46 @@ const styles = StyleSheet.create({
     },
     imgRow: {
         flexDirection: "row",
-        alignItems:'center',
-        justifyContent:'space-between',
-        marginBottom: theme.sizes.hpoints * 2,
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
     },
-    row: {
+    descRow: {
+        width: theme.sizes.wpoints * 90,
+        alignSelf: 'center'
+    },
+    sliderRow: {
         flexDirection: "row",
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: theme.sizes.wpoints * 90,
+        alignSelf: 'center'
+    },
+    priceRow: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        width: theme.sizes.wpoints * 84,
+        marginLeft: theme.sizes.wpoints * 4,
+        alignItems: 'flex-end',
+    },
+    ratingRow: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        width: theme.sizes.wpoints * 84,
+        marginLeft: theme.sizes.wpoints * 4,
     },
     slider: {
-        width: theme.sizes.wpoints * 90,
-        height: theme.sizes.hpoints
+        width: theme.sizes.wpoints * 70,
+    },
+    msg: {
+        color: theme.colors.red,
+        flex: 0.5,
+    },
+    content: {
+        flex: 8.5,
+        gap: theme.sizes.hpoints * 4,
+    },
+    btn: {
+        flex: 1
     }
 });
 

@@ -12,6 +12,7 @@ export default class Typography extends Component {
             title,
             normalbold,
             style,
+            big,
             ...props
         }=this.props;
 
@@ -21,6 +22,7 @@ export default class Typography extends Component {
             title && styles.title,
             normal && styles.normal,
             normalbold && styles.normalb,
+            big && styles.big,
             style
         ]
 
@@ -39,4 +41,5 @@ const styles = StyleSheet.create({
     title:theme.fonts.title,
     normal:theme.fonts.normal,
     normalb:theme.fonts.normalb,
+    big:theme.fonts.big,
 });

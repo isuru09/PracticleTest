@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Text } from "../components";
 import * as theme from "../constants/theme";
 
@@ -27,7 +27,7 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
     headerrow:{
         flexDirection:'row',
-        height:theme.sizes.hpoints*8,
+        height:Platform.OS=='ios'?theme.sizes.hpoints*5:theme.sizes.hpoints*8,
         borderBottomColor:theme.colors.greyop,
         borderBottomWidth:theme.sizes.hpoints*0.2,
         alignItems:'center',

@@ -14,12 +14,18 @@ const images={
     location:require('../../assets/images/location.png'),
     phone:require('../../assets/images/phone.png'),
     sex:require('../../assets/images/sex.png'),
+    sexf:require('../../assets/images/sexf.png'),
+    sext:require('../../assets/images/sext.png'),
     work:require('../../assets/images/work.png'),
     back:require('../../assets/images/back.png'),
     next:require('../../assets/images/next.png'),
+    star:require('../../assets/images/star.png'),
+    starf:require('../../assets/images/starf.png'),
+    logo:require('../../assets/images/logo.png'),
 }
 
 const colors = {
+    transparent: "#1a181800",
     grey: "#91919F",
     greyop: "#91919F60",
     white: "#FFFFFF",
@@ -34,7 +40,8 @@ const sizes = {
     hpoints: height/100,
     h1:30,
     normal:14,
-    title:16
+    title:16,
+    big:40
 }
 
 const fontnames = {
@@ -61,6 +68,11 @@ const fonts = {
     normalb: {
         fontFamily: fontnames.poppinsBold,
         fontSize: sizes.normal,
+        color: colors.grey,
+    },
+    big: {
+        fontFamily: fontnames.poppins,
+        fontSize: sizes.big,
         color: colors.grey,
     },
 }
