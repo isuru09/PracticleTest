@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useUserViewModel from "../view-models/useUserViewModel"
-import { useNavigation } from "@react-navigation/native";
-import { screens } from "../navigation/screens";
+import BootSplash from "react-native-bootsplash";
 
 const useUserViewController = () => {
     const [username,setUsername]=useState('');
@@ -9,8 +8,6 @@ const useUserViewController = () => {
     const [msg,setMsg]=useState('');
     const {loggingIn,errMsg,userData,loginUser,logoutUser} = useUserViewModel();
 
-    const navigation=useNavigation();
-    
     const onChangeUsername = (text:string) =>{
         setUsername(text);
     }
@@ -28,9 +25,13 @@ const useUserViewController = () => {
         }
     }
 
-    const logout = () =>{
-        logoutUser();
+    const splashHide = async () => {
+        await BootSplash.hide({ fade: true });
     }
+
+    useEffect(()=>{
+        splashHide();
+    },[]);
 
     return{
         loggingIn,
@@ -40,7 +41,7 @@ const useUserViewController = () => {
         onChangeUsername,
         onChangePassword,
         login,
-        logout
+        splashHide
     }
 }
 

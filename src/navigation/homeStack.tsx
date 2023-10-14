@@ -5,6 +5,7 @@ import LoginScreen from "../screens/loginScreen";
 import BottomTabNavigator from "./bottomTabNavigator";
 import HomeScreen from "../screens/homeScreen";
 import ProductScreen from "../screens/productScreen";
+import CheckoutScreen from "../screens/checkoutScreen";
 
 const HomeStack = () => {
     const Stack = createNativeStackNavigator();
@@ -18,6 +19,11 @@ const HomeStack = () => {
                 <Stack.Screen
                     name={screens.product}
                     component={ProductScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name={screens.checkout}
+                    component={CheckoutScreen}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

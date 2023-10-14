@@ -6,4 +6,5 @@ export const screens={
     product:'Product',
     cart:'Cart',
     profile:'Profile',
+    checkout:'Checkout',
 }

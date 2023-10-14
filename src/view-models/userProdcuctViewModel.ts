@@ -9,7 +9,7 @@ const useProductViewModel = () => {
 
     const {getProducts,getProduct} =useProductModel();
 
-    const {setProducts,setProduct,setProductId,addCart,removeCart} = ProductAction;
+    const {setProducts,setProduct,setProductId,addCart,removeCart,clearCart} = ProductAction;
 
     const getAllProducts = () => {
         const data=getProducts();
@@ -44,6 +44,10 @@ const useProductViewModel = () => {
         dispatch(removeCart({id:id}));
     }
 
+    const clearAllCart = () =>{
+        dispatch(clearCart());
+    }
+
     return{
         fetchProduct,
         fetchProducts,
@@ -54,7 +58,8 @@ const useProductViewModel = () => {
         setSingleProduct,
         getSingleProduct,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        clearAllCart
     }
 }
 

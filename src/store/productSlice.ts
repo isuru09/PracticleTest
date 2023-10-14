@@ -29,17 +29,21 @@ export const productSlice = createSlice({
         removeCart:(state,action:{payload: {id: number}; type: string})=>{
             state.cart=state.cart.filter((e:any)=>e.id!==action.payload.id);
         },
+        clearCart:(state)=>{
+            state.cart=[];
+        },
     }
 });
 
-const { setProducts,setProduct,setProductId,addCart,removeCart } = productSlice.actions;
+const { setProducts,setProduct,setProductId,addCart,removeCart,clearCart } = productSlice.actions;
 
 export const ProductAction = {
     setProducts,
     setProduct,
     setProductId,
     addCart,
-    removeCart
+    removeCart,
+    clearCart
 };
 
 export default productSlice.reducer;
