@@ -2,6 +2,8 @@ export type UserStateType = {
     loggingIn: boolean;
     errMsg:string;
     userData: any;
+    fetchUser:boolean;
+    userDataFull:any;
 }
 
 export type ProductStateType = {

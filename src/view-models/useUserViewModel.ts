@@ -7,11 +7,11 @@ import { screens } from "../navigation/screens";
 
 const useUserViewModel = () => {
     const dispatch = useDispatch();
-    const {loggingIn,errMsg,userData}=useSelector((state:StoreType) => state.user);
+    const {loggingIn,errMsg,userData,userDataFull}=useSelector((state:StoreType) => state.user);
 
-    const {login}=useUserModel();
+    const {login,fetchUser}=useUserModel();
 
-    const {setLogingIn,setError,setUser} = UserAction;
+    const {setLogingIn,setError,setUser,setUserData} = UserAction;
 
     const loginUser = (username:string,password:string) => {
         dispatch(setLogingIn({login:true}));
@@ -22,7 +22,16 @@ const useUserViewModel = () => {
         ).catch((e)=>{
             dispatch(setError({msg:e.response.data.message}));
         });
-        
+    }
+
+    const getUser = (id:number) =>{
+        const data=fetchUser(id);
+        data.then((resp)=>{
+            dispatch(setUserData({user:resp.data}));
+        }
+        ).catch((e)=>{
+            dispatch(setUserData({user:{}}));
+        });
     }
 
     const logoutUser = () => {
@@ -33,8 +42,10 @@ const useUserViewModel = () => {
         loggingIn,
         errMsg,
         userData,
+        userDataFull,
         loginUser,
-        logoutUser
+        logoutUser,
+        getUser
     }
 }
 

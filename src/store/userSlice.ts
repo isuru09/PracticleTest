@@ -17,16 +17,21 @@ export const userSlice = createSlice({
         setUser:(state,action:{payload: {user: any}; type: string})=>{
             state.userData=action.payload.user;
             state.loggingIn=false;
+        },
+        setUserData:(state,action:{payload: {user: any}; type: string})=>{
+            state.userDataFull=action.payload.user;
+            state.fetchUser=false;
         }
     }
 });
 
-const { setLogingIn,setError,setUser } = userSlice.actions;
+const { setLogingIn,setError,setUser,setUserData } = userSlice.actions;
 
 export const UserAction = {
     setLogingIn,
     setError,
     setUser,
+    setUserData
 };
 
 export default userSlice.reducer;

@@ -6,16 +6,26 @@ const useUserModel = () => {
             method: 'post',
             url: 'https://dummyjson.com/auth/login',
             data: {
-                username: 'kminchelle',
-                password: '0lelplR'
+                username: username,
+                password: password
             }
         })
 
         return data;
     }
 
+    const fetchUser = (id:number) => {
+        const data=axios({
+            method: 'get',
+            url: 'https://dummyjson.com/user/'+id,
+        })
+
+        return data;
+    }
+
     return {
-        login
+        login,
+        fetchUser
     };
 }
 

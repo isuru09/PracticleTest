@@ -25,7 +25,7 @@ export default class IconNameRow extends Component {
 const styles = StyleSheet.create({
     row:{
         flexDirection:'row',
-        gap:theme.sizes.hpoints * 2.5,
+        gap:theme.sizes.hpoints * 1,
         width:theme.sizes.wpoints*85,
         alignItems:'center',
         alignSelf:'center',

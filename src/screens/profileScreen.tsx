@@ -1,29 +1,32 @@
 import { Image, StyleSheet, View } from "react-native";
 import * as theme from "../constants/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
-import useUserViewController from "../view-controllers/useUserViewController";
 import IconNameRow from "../components/iconNameRow";
 import Button from "../components/button";
+import Header from "../components/Header";
+import useProfileViewController from "../view-controllers/useProfileViewController";
 
 const ProfileScreen = () => {
-    const { userData,logout} = useUserViewController();
+    const { userData, userDataFull,logout } = useProfileViewController();
 
     return (
         <SafeAreaView style={styles.container}>
-            <Image source={{ uri: userData.image }} style={styles.img} />
-            <IconNameRow icon={theme.images.user} text={'Username'} btext={userData.username}/>
-            <IconNameRow icon={theme.images.user} text={'Name'} btext={userData.firstName+' '+userData.lastName}/>
-            <IconNameRow icon={theme.images.cake} text={'Birth Date'} btext={'2000-12-25'}/>
-            <IconNameRow icon={theme.images.sex} text={''} btext={userData.gender}/>
-            <IconNameRow icon={theme.images.phone} text={'Contact'} btext={'+63 791 675 8914'}/>
-            <IconNameRow icon={theme.images.hat} text={'Studied at'} btext={'Capital University'}/>
-            <IconNameRow icon={theme.images.location} text={'From'} btext={'Washington'}/>
-            <IconNameRow icon={theme.images.cake} text={'Works at'} btext={'Facebook'}/>
-            <IconNameRow icon={theme.images.cake} text={'Work as a'} btext={'Help desk'}/>
-            <View style={styles.btn}>
-            <Button text = { 'Logout' } onPress = { logout }/>
+            <Header title={userData.firstName + ' ' + userData.lastName} />
+
+            <View style={styles.content}>
+                <Image source={{ uri: userData.image }} style={styles.img} />
+                <IconNameRow icon={theme.images.cake} text={'Birth Date'} btext={userDataFull.birthDate} />
+                <IconNameRow icon={userDataFull.gender=='male'?theme.images.sex:userDataFull.gender=='female'?theme.images.sexf:theme.images.sext} text={''} btext={userDataFull.gender} />
+                <IconNameRow icon={theme.images.phone} text={'Contact'} btext={userDataFull.phone} />
+                <IconNameRow icon={theme.images.hat} text={'Studied at'} btext={userDataFull.university} />
+                <IconNameRow icon={theme.images.location} text={'From'} btext={userDataFull.address?.city} />
+                <IconNameRow icon={theme.images.work} text={'Works at'} btext={userDataFull.company?.name} />
+                <IconNameRow icon={theme.images.job} text={'Work as a'} btext={userDataFull.company?.title} />
             </View>
-            
+            <View style={styles.btn}>
+                <Button text={'Logout'} onPress={logout} />
+            </View>
+
         </SafeAreaView>
     );
 }
@@ -34,7 +37,6 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: theme.sizes.hpoints*1.5,
         backgroundColor: theme.colors.white,
     },
     img: {
@@ -44,8 +46,12 @@ const styles = StyleSheet.create({
         height: theme.sizes.hpoints * 20,
         borderRadius: theme.sizes.hpoints * 10,
     },
-    btn:{
-        marginTop: theme.sizes.hpoints*10,
+    content: {
+        flex: 9,
+        gap: theme.sizes.hpoints * 1.5,
+    },
+    btn: {
+        flex: 1
     }
 });
 
