@@ -2,6 +2,19 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 const images={
+    home:require('../../assets/images/home.png'),
+    homes:require('../../assets/images/homes.png'),
+    cart:require('../../assets/images/cart.png'),
+    carts:require('../../assets/images/carts.png'),
+    user:require('../../assets/images/user.png'),
+    users:require('../../assets/images/users.png'),
+    cake:require('../../assets/images/cake.png'),
+    hat:require('../../assets/images/hat.png'),
+    job:require('../../assets/images/job.png'),
+    location:require('../../assets/images/location.png'),
+    phone:require('../../assets/images/phone.png'),
+    sex:require('../../assets/images/sex.png'),
+    work:require('../../assets/images/work.png'),
 }
 
 const colors = {

@@ -3,26 +3,27 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { screens } from "./screens";
 import LoginScreen from "../screens/loginScreen";
 import BottomTabNavigator from "./bottomTabNavigator";
+import HomeScreen from "../screens/homeScreen";
+import ProductScreen from "../screens/productScreen";
 
-const AppContainer = () => {
+const HomeStack = () => {
     const Stack = createNativeStackNavigator();
     return (
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name={screens.login}
-                    component={LoginScreen}
+                    name={screens.home}
+                    component={HomeScreen}
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
-                    name={screens.tab}
-                    component={BottomTabNavigator}
+                    name={screens.product}
+                    component={ProductScreen}
                     options={{ headerShown: false }}
                 />
-
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
 
-export default AppContainer;
+export default HomeStack;
