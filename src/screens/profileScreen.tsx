@@ -3,7 +3,7 @@ import * as theme from "../constants/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
 import IconNameRow from "../components/iconNameRow";
 import { Button } from "../components";
-import Header from "../components/Header";
+import Header from "../components/header";
 import useProfileViewController from "../view-controllers/useProfileViewController";
 
 const ProfileScreen = () => {

@@ -2,8 +2,8 @@ import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useHomeViewController from "../view-controllers/useHomeViewController";
 import * as theme from "../constants/theme";
-import Header from "../components/Header";
-import ProductItem from "../components/ProductItem";
+import Header from "../components/header";
+import ProductItem from "../components/productItem";
 import { Text } from "../components";
 
 

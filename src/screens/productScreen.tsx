@@ -1,7 +1,7 @@
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as theme from "../constants/theme";
-import Header from "../components/Header";
+import Header from "../components/header";
 import useProductViewController from "../view-controllers/useProductViewController";
 import { Text, Button } from "../components";
 import Slider from "@react-native-community/slider";

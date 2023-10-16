@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import * as theme from "../constants/theme";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../components/Header";
+import Header from "../components/header";
 import useCartViewController from "../view-controllers/userCartViewController";
 import CartItem from "../components/cartItem";
 import { Text, Button } from "../components";

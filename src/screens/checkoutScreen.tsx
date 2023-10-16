@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as theme from "../constants/theme";
 import useCheckoutViewController from "../view-controllers/useCheckoutViewController";
-import Header from "../components/Header";
+import Header from "../components/header";
 import { Text, Button } from "../components";
 import { RadioButton } from 'react-native-paper';
 
